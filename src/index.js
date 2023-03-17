@@ -46,8 +46,8 @@ async function onSearch(e) {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
-  } catch (err) {
-    return Notify.failure(`${err.name}`);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -83,3 +83,6 @@ function appendMarkup(array) {
   galleryEl.insertAdjacentHTML('beforeend', createMarkup(array));
 }
 
+export function handleError(status) {
+  Notify.failure(`${status}`);
+}
