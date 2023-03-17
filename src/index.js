@@ -34,7 +34,6 @@ async function onSearch(e) {
   }
 
   const response = await fetchPixabay(quiry, page);
-
   try {
     if (Math.ceil(response.totalHits > 0)) {
       observer.observe(guardEl);
@@ -47,8 +46,8 @@ async function onSearch(e) {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    return Notify.failure(`${err.name}`);
   }
 }
 
@@ -83,3 +82,4 @@ function onLoad(entries, observer) {
 function appendMarkup(array) {
   galleryEl.insertAdjacentHTML('beforeend', createMarkup(array));
 }
+
