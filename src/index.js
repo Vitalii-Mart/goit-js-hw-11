@@ -34,6 +34,9 @@ async function onSearch(e) {
   }
 
   const response = await fetchPixabay(quiry, page);
+    if(!response) {
+    return 
+  }
   try {
     if (Math.ceil(response.totalHits > 0)) {
       observer.observe(guardEl);
